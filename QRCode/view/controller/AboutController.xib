@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_ico" translatesAutoresizingMaskIntoConstraints="NO" id="KyT-0m-egr">
+                    <rect key="frame" x="162.5" y="200" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="OsT-Lv-rCy"/>
+                        <constraint firstAttribute="width" constant="50" id="hnC-lJ-eLi"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V.1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHf-Rw-3WO">
+                    <rect key="frame" x="173" y="270" width="30" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二维码全能王" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVE-lB-a5o">
+                    <rect key="frame" x="135" y="307" width="104" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibw-E4-XjZ">
+                    <rect key="frame" x="112.5" y="472" width="150" height="45"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="hgS-ce-f5m"/>
+                        <constraint firstAttribute="height" constant="45" id="nm7-kM-gWS"/>
+                    </constraints>
+                    <state key="normal" title="赞助去广告">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KyT-0m-egr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="Hea-Ua-FKx"/>
+                <constraint firstItem="FVE-lB-a5o" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Kyo-zl-ewX"/>
+                <constraint firstItem="ibw-E4-XjZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Uy3-g6-Y9Y"/>
+                <constraint firstItem="KyT-0m-egr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ani-BK-gcH"/>
+                <constraint firstItem="FVE-lB-a5o" firstAttribute="top" secondItem="yHf-Rw-3WO" secondAttribute="bottom" constant="20" id="mCx-ju-bXd"/>
+                <constraint firstAttribute="bottom" secondItem="ibw-E4-XjZ" secondAttribute="bottom" constant="150" id="qTI-ur-NyJ"/>
+                <constraint firstItem="yHf-Rw-3WO" firstAttribute="top" secondItem="KyT-0m-egr" secondAttribute="bottom" constant="20" id="rJs-Vc-Cdh"/>
+                <constraint firstItem="yHf-Rw-3WO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="y4t-8m-j8d"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="120.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo_ico" width="24" height="24"/>
+    </resources>
+</document>

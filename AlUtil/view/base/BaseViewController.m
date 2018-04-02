@@ -26,7 +26,7 @@
     
    
     self.edgesForExtendedLayout = UIRectEdgeAll; //系统默认值,系统布局需要从状态栏开始
-    self.navigationController.navigationBar.translucent = NO;  //ios6之前默认为no,ios6之后默认为ysa,NO的时候,,布局就会自动从状态栏下方开始,我们布局直接从状态栏开始,无下移ß下64
+    self.navigationController.navigationBar.translucent = NO;  //ios6之前默认为no,ios6之后默认为ysa,NO的时候,,布局就会自动从状态栏下方开始,我们布局直接从状态栏开始,无下移ß下64,但是屏幕高度会减少64
 
     //统一设置背景颜色
     self.view.backgroundColor=[UIColor colorWithHexString:@"#f0f0f0"];

@@ -11,6 +11,12 @@ target 'QRCode' do
   pod 'MJExtension', '~> 3.0.13'  #json框架
   
   pod 'Masonry', '~> 1.0.2'    #尺寸框架
+  
+  pod 'SDWebImage', '~> 3.8.2' #图片处理框架
+  
+  pod 'OAStackView', '~> 1.0.1'
+
+
   target 'QRCodeTests' do
     inherit! :search_paths
     # Pods for testing

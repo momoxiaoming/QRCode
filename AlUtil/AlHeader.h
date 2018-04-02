@@ -24,11 +24,9 @@
 
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
-#import "BaseTableCell.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
-#import <MJRefresh.h>
 #import <Masonry.h>
 #import <UIImageView+WebCache.h>
 //全局的宏
@@ -62,6 +60,8 @@
 //-----------缩放适配---360为设计稿的宽度--和高度----------
 #define AWscale(n) (([UIScreen mainScreen].bounds.size.width)/360)*n
 #define AHscale(n) (([UIScreen mainScreen].bounds.size.height)/640)*n
+
+
 
 
 //缩放适配2
