@@ -8,6 +8,7 @@
 
 #import "BaseNavigationController.h"
 
+
 @interface BaseNavigationController ()
 
 @end
@@ -23,8 +24,9 @@
 
     //设置导航栏字体颜色
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:18]};
+    
     //设置导航栏背景颜色的颜色
-    self.navigationBar.barTintColor=[UIColor colorWithHexString:@"#cc6600"];
+    self.navigationBar.barTintColor=BaseColor;
     
 //    //设置返回字体内容
 //    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];

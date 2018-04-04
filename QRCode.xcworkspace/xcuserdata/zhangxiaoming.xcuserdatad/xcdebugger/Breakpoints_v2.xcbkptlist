@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QRCode/view/controller/ScanController.m"
-            timestampString = "544366758.004027"
+            timestampString = "544453554.039807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -26,12 +26,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QRCode/view/controller/ScanController.m"
-            timestampString = "544366758.004413"
+            timestampString = "544453554.039943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "269"
             endingLineNumber = "269"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QRCode/view/controller/CodeController.m"
+            timestampString = "544453554.040061"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-contentAction:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__26-[CodeController initView]_block_invoke"
+                  moduleName = "QRCode"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoming/ios_good_study/oc%E9%A1%B9%E7%9B%AE/2018%E4%B8%8A%E5%8D%8A%E5%B9%B4%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/QRCode/QRCode/view/controller/CodeController.m"
+                  timestampString = "544452863.891114"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "1306">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "QRCode"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoming/ios_good_study/oc%E9%A1%B9%E7%9B%AE/2018%E4%B8%8A%E5%8D%8A%E5%B9%B4%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/QRCode/QRCode/view/controller/CodeController.m"
+                  timestampString = "544452863.89387"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "51">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "QRCode"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangxiaoming/ios_good_study/oc%E9%A1%B9%E7%9B%AE/2018%E4%B8%8A%E5%8D%8A%E5%B9%B4%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/QRCode/QRCode/view/controller/CodeController.m"
+                  timestampString = "544452863.896499"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "29">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QRCode/view/ALColorSelectorView.m"
+            timestampString = "544453554.040187"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-initView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,7 +7,7 @@
 //
 
 #import "ModeController.h"
-
+#import "CodeController.h"
 @interface ModeController ()
 @property (weak, nonatomic) IBOutlet UITextView *top_view;
 @property (weak, nonatomic) IBOutlet UIButton *btn;
@@ -24,9 +24,30 @@
     self.title=@"生成";
 }
 -(void)initView{
-    ALViewBorderRadius(_top_view, 8, 1, [UIColor colorWithHexString:@"#cc6600"]);
+    ALViewBorderRadius(_top_view, 8, 1, BaseColor);
     ALViewRadius(_btn, 8);
+    
+    [_btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
 }
+
+
+-(void)btnAction{
+    NSString *codestr=_top_view.text ;
+    codestr=strByTrim(codestr);
+    
+    if(codestr.length<=0){
+        [self showErrorMB:@"输入内容不能为空哦!"];
+        return;
+    }
+    CodeController *code=[CodeController new];
+    code.code=codestr;
+    
+    [self goNextController:code];
+    
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

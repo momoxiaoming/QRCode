@@ -16,6 +16,7 @@ target 'QRCode' do
   
   pod 'OAStackView', '~> 1.0.1'
 
+#    pod 'IQKeyboardManager', '~> 4.0.6'  #键盘处理框架
 
   target 'QRCodeTests' do
     inherit! :search_paths

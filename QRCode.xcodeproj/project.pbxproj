@@ -44,6 +44,10 @@
 		7AFBEF5020722521008DE867 /* ScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEF4F20722521008DE867 /* ScanController.m */; };
 		7AFBEF5320723032008DE867 /* SucController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEF5220723032008DE867 /* SucController.m */; };
 		7AFBEF5820725CD0008DE867 /* LCQrcodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEF5720725CD0008DE867 /* LCQrcodeUtil.m */; };
+		7AFBEF5B20731577008DE867 /* CodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEF5A20731577008DE867 /* CodeController.m */; };
+		7AFBEF5F207373C3008DE867 /* TextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEF5E207373C3008DE867 /* TextController.m */; };
+		7AFBEF622073A5B5008DE867 /* ALColorSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEF612073A5B5008DE867 /* ALColorSelectorView.m */; };
+		7AFBEF65207469A0008DE867 /* ColorAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEF64207469A0008DE867 /* ColorAlertView.m */; };
 		CD9C5E8D09BBD3344A278549 /* libPods-QRCodeUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA973428B281A5EAE87FCEF /* libPods-QRCodeUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +143,14 @@
 		7AFBEF5220723032008DE867 /* SucController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SucController.m; sourceTree = "<group>"; };
 		7AFBEF5620725CD0008DE867 /* LCQRCodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCQRCodeUtil.h; sourceTree = "<group>"; };
 		7AFBEF5720725CD0008DE867 /* LCQrcodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCQrcodeUtil.m; sourceTree = "<group>"; };
+		7AFBEF5920731577008DE867 /* CodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeController.h; sourceTree = "<group>"; };
+		7AFBEF5A20731577008DE867 /* CodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeController.m; sourceTree = "<group>"; };
+		7AFBEF5D207373C3008DE867 /* TextController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextController.h; sourceTree = "<group>"; };
+		7AFBEF5E207373C3008DE867 /* TextController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextController.m; sourceTree = "<group>"; };
+		7AFBEF602073A5B5008DE867 /* ALColorSelectorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALColorSelectorView.h; sourceTree = "<group>"; };
+		7AFBEF612073A5B5008DE867 /* ALColorSelectorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALColorSelectorView.m; sourceTree = "<group>"; };
+		7AFBEF63207469A0008DE867 /* ColorAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorAlertView.h; sourceTree = "<group>"; };
+		7AFBEF64207469A0008DE867 /* ColorAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorAlertView.m; sourceTree = "<group>"; };
 		B568C66EA0A461111AB0771D /* Pods-QRCodeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeTests/Pods-QRCodeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3A9BF9A0F1804009A67826F /* Pods-QRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRCode/Pods-QRCode.debug.xcconfig"; sourceTree = "<group>"; };
 		EC75C7911283D0ED675DFD1F /* Pods-QRCodeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeTests/Pods-QRCodeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,7 +259,10 @@
 		7AFBEEE52071FFB2008DE867 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				7AFBEF66207469AE008DE867 /* view */,
 				7AFBEEE82071FFCC008DE867 /* controller */,
+				7AFBEF602073A5B5008DE867 /* ALColorSelectorView.h */,
+				7AFBEF612073A5B5008DE867 /* ALColorSelectorView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -283,6 +298,10 @@
 				7AFBEF4C20721363008DE867 /* AboutController.xib */,
 				7AFBEF5120723032008DE867 /* SucController.h */,
 				7AFBEF5220723032008DE867 /* SucController.m */,
+				7AFBEF5920731577008DE867 /* CodeController.h */,
+				7AFBEF5A20731577008DE867 /* CodeController.m */,
+				7AFBEF5D207373C3008DE867 /* TextController.h */,
+				7AFBEF5E207373C3008DE867 /* TextController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -304,10 +323,10 @@
 			children = (
 				7AFBEEF5207209B3008DE867 /* UIView+ALCore.m */,
 				7AFBEEF6207209B3008DE867 /* UIImage+AL.h */,
+				7AFBEEFA207209B3008DE867 /* UIImage+AL.m */,
 				7AFBEEF7207209B3008DE867 /* UIColor+AL.m */,
 				7AFBEEF8207209B3008DE867 /* NSDate+AL.h */,
 				7AFBEEF9207209B3008DE867 /* UIView+ALCore.h */,
-				7AFBEEFA207209B3008DE867 /* UIImage+AL.m */,
 				7AFBEEFB207209B3008DE867 /* UIColor+AL.h */,
 				7AFBEEFC207209B3008DE867 /* NSDate+AL.m */,
 			);
@@ -429,6 +448,15 @@
 				7AFBEF5720725CD0008DE867 /* LCQrcodeUtil.m */,
 			);
 			path = LCQRCodeUtil;
+			sourceTree = "<group>";
+		};
+		7AFBEF66207469AE008DE867 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7AFBEF63207469A0008DE867 /* ColorAlertView.h */,
+				7AFBEF64207469A0008DE867 /* ColorAlertView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		880A066909301094E97E9B05 /* Frameworks */ = {
@@ -734,6 +762,7 @@
 				7AFBEF29207209B3008DE867 /* UIColor+AL.m in Sources */,
 				7AFBEF28207209B3008DE867 /* UIView+ALCore.m in Sources */,
 				7AFBEF5820725CD0008DE867 /* LCQrcodeUtil.m in Sources */,
+				7AFBEF65207469A0008DE867 /* ColorAlertView.m in Sources */,
 				7AFBEF31207209B3008DE867 /* TagsFrame.m in Sources */,
 				7AFBEF38207209B3008DE867 /* ALaunchAdManager.m in Sources */,
 				7AFBEF5320723032008DE867 /* SucController.m in Sources */,
@@ -743,13 +772,16 @@
 				7AFBEF39207209B3008DE867 /* ALCollectionViewFlowLayout.m in Sources */,
 				7AFBEF2A207209B3008DE867 /* UIImage+AL.m in Sources */,
 				7AFBEEEF20720006008DE867 /* MainController.m in Sources */,
+				7AFBEF5F207373C3008DE867 /* TextController.m in Sources */,
 				7AFBEE742071CDA4008DE867 /* main.m in Sources */,
 				7AFBEE662071CDA3008DE867 /* AppDelegate.m in Sources */,
 				7AFBEF30207209B3008DE867 /* SDWebImage.m in Sources */,
+				7AFBEF5B20731577008DE867 /* CodeController.m in Sources */,
 				7AFBEF5020722521008DE867 /* ScanController.m in Sources */,
 				7AFBEF4820721077008DE867 /* ModeController.m in Sources */,
 				7AFBEF3A207209B3008DE867 /* BaseViewController.m in Sources */,
 				7AFBEF4D20721363008DE867 /* AboutController.m in Sources */,
+				7AFBEF622073A5B5008DE867 /* ALColorSelectorView.m in Sources */,
 				7AFBEF32207209B3008DE867 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -914,7 +946,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QRCode/QRCode.pch";
 				INFOPLIST_FILE = QRCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjm.QRCode;
+				PRODUCT_BUNDLE_IDENTIFIER = com.util.code;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -930,7 +962,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = QRCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zjm.QRCode;
+				PRODUCT_BUNDLE_IDENTIFIER = com.util.code;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
