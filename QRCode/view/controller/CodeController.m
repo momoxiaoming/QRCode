@@ -9,12 +9,13 @@
 #import "CodeController.h"
 #import "LCQRCodeUtil.h"
 #import "TextController.h"
-
-
+#import "PicterController.h"
+#import "ColorController.h"
 @interface CodeController ()
-@property (nonatomic,strong) UIImageView *img;
 
 @property (nonatomic,strong)UIView *imgView; //要截取为图片的view
+@property (nonatomic,strong) UIImageView *img; //二维码图片
+
 @property (nonatomic,strong)UILabel *bomView; //文字区域
 
 @property (nonatomic,strong)UIView *menuView; //菜单选择
@@ -23,7 +24,16 @@
 @property (nonatomic,strong)UIView *img_menu; //添加图片
 @property (nonatomic,strong)UIView *color_menu; //改变颜色
 
+@property (nonatomic,strong)UIImage *codeImg; //二维码图片
 
+
+//二维码上的附加信息
+@property (nonatomic,strong)UIColor *bgColor; //二维码图片
+@property (nonatomic,strong)UIColor *fillColor; //填充色
+@property (nonatomic,strong)UIImage *logoImage; //logo图片
+@property (nonatomic,strong)NSString *text; //附加
+
+@property (nonatomic,strong)NSMutableDictionary *codeData; //附加信息
 
 @end
 
@@ -37,37 +47,70 @@
     
 }
 -(void)initData{
+    _codeData=[[NSMutableDictionary alloc]init];
+    
+    _fillColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    [_codeData setObject:_fillColor forKey:@"fillColor"];
+    [_codeData setObject:_code forKey:@"codeStr"];
+    [_codeData setObject:[UIColor colorWithRed:0 green:0 blue:0 alpha:1] forKey:@"textColor"];
+    [_codeData setObject:[UIColor colorWithRed:1 green:1 blue:1 alpha:1] forKey:@"bgColor"];
+
+    
+    
+      _codeImg=[LCQRCodeUtil qrCodeImageWithContent:_code codeImageSize:SCREEN_WIDTH-10 logo:nil logoFrame:0 Color:_fillColor];
+    
+    if(!_codeImg){
+        [self showErrorMB:@"生成错误,请返回重试!"];
+//        return;
+    }
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(contentAction:) name:@"codeContent" object:nil];
     
 }
 
+
+-(void)decodeCodeData{
+    
+    NSString *code= [_codeData objectForKey:@"codeStr"];
+    NSString *text= [_codeData objectForKey:@"text"];
+    UIColor *textColor= [_codeData objectForKey:@"textColor"];
+    UIImage *logo= [_codeData objectForKey:@"logo"];
+    UIColor *bgColor= [_codeData objectForKey:@"bgColor"];
+    UIColor *fillColor= [_codeData objectForKey:@"fillColor"];
+    
+    UIImage *codeImage=[LCQRCodeUtil qrCodeImageWithContent:code codeImageSize:SCREEN_WIDTH-20 logo:logo logoFrame:60 Color:fillColor];
+    
+    _imgView.backgroundColor=bgColor;
+   
+    
+    
+    
+    _img.image=codeImage;
+    //计算文字高度
+    
+    
+    if(ALStringIsEmpty(text)){
+        
+        return;
+    }
+    
+        
+     _bomView.textColor=textColor;
+    _bomView.text=text;
+    CGSize titleSize = [text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil].size;
+    CGFloat height= titleSize.height;
+    
+    [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-10, SCREEN_WIDTH-10+10+height));
+    }];
+}
+
 -(void)contentAction:(NSNotification *)not{
     NSDictionary *data=not.object;
-    NSString *type=[data objectForKey:@"type"];
-    NSString *content=[data objectForKey:@"content"];
 
-    if(ALStrEqlstr(@"1", type)){
-        //文字
-        _bomView.text=content;
-        
-        //计算文字高度
-        CGFloat height= [self getTextheight:content];
-        
-        //更新约束
-//        [_bomView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.height.equalTo(@30);
-//
-//        }];
-        [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH+10+height));
-        }];
-        
-        
-        
-        
-        
-        
-    }
+    [_codeData setDictionary:data];
+    [self decodeCodeData];
+
     
 }
 
@@ -75,55 +118,70 @@
 -(void)resetCode{
     
 //    _img.image=nil;
-    _bomView.text=@"";
-  
+//    _bomView.text=@"";
+//    _imgView.backgroundColor=[UIColor whiteColor];
+    _bgColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    _fillColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+
+    
+    
+    [_codeData setObject:_fillColor forKey:@"fillColor"];
+    [_codeData setObject:_code forKey:@"codeStr"];
+    [_codeData setObject:[UIColor colorWithRed:1 green:1 blue:1 alpha:1] forKey:@"textColor"];
+    [_codeData setObject:_bgColor forKey:@"bgColor"];
+    [_codeData setObject:@"" forKey:@"text"];
+    [_codeData removeObjectForKey:@"logo"];
+
+//
+//    _codeImg=[LCQRCodeUtil qrCodeImageWithContent:_code codeImageSize:SCREEN_WIDTH-20 logo:nil logoFrame:0 Color:_fillColor];
+    
+    [self decodeCodeData];
+    
+    
+    
     [_imgView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH));
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-10, SCREEN_WIDTH-10));
     }];
     
 }
 
 
 
--(CGFloat)getTextheight:(NSString *)msg{
-    CGSize titleSize = [msg boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil].size;
-    return titleSize.height;
-    
-}
+
 
 
 -(void)initView{
     
     _imgView=[[UIView alloc]init];
-    _imgView.backgroundColor=[UIColor whiteColor];
+    ALViewRadius(_imgView, 8);
 
     [self.view addSubview:_imgView];
     _imgView.backgroundColor=[UIColor whiteColor];
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
+        make.left.equalTo(self.view).offset(5);
+        make.right.equalTo(self.view).offset(-5);
         make.top.equalTo(self.view).offset(30);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH));
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-10, SCREEN_WIDTH-10));
         
     }];
     
     _img=[[UIImageView alloc]init];
-    
+    _img.backgroundColor=[UIColor clearColor];
     [_imgView addSubview:_img];
     
     [_img mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_imgView);
-        make.left.equalTo(_imgView);
-        make.right.equalTo(_imgView);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH));
+        make.centerX.equalTo(_imgView);
+        
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-10, SCREEN_WIDTH-10));
     }];
     
+   
     
     
     _bomView=[[UILabel alloc]init];
     _bomView.textAlignment=NSTextAlignmentCenter;
     _bomView.font=[UIFont systemFontOfSize:16];
-//    [_bomView setLineBreakMode:NSLineBreakByCharWrapping];
     _bomView.numberOfLines=0;
     [_imgView addSubview:_bomView];
     
@@ -268,10 +326,8 @@
     
     
     
-    UIImage *codeImg=[LCQRCodeUtil createQRimageString:_code sizeWidth:SCREEN_WIDTH fillColor:[UIColor redColor]];
-    _img.image=codeImg;
+  
     
-    _img.backgroundColor=[UIColor whiteColor];
     
     UIBarButtonItem *right=[[UIBarButtonItem alloc]initWithTitle:@"更多" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction)];
     
@@ -285,6 +341,12 @@
     [_img addGestureRecognizer:tableViewGesture];
     
     
+//    ColorAlertView *alerColor=[[ColorAlertView alloc]initWithFrame:CGRectZero];
+
+    
+    _img.image=_codeImg;
+
+    
     
     [self setListener:_text_menu index:1];
     [self setListener:_img_menu index:2];
@@ -297,17 +359,20 @@
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     ALWk(weakSelf);
-    [alert addAction:[UIAlertAction actionWithTitle:@"保存二维码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf loadImageFinished:_img.image];
+    [alert addAction:[UIAlertAction actionWithTitle:@"保存图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [alert dismissViewControllerAnimated:YES
                                   completion:nil];
+        
+        UIImage *img=[weakSelf imageFromView:_imgView];
+        [weakSelf loadImageFinished:img];
+
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"分享二维码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"分享图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf sharp];
         [alert dismissViewControllerAnimated:YES
                                   completion:nil];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"还原二维码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"重置图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf resetCode];
         [alert dismissViewControllerAnimated:YES
                                   completion:nil];
@@ -354,7 +419,18 @@
     UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:images applicationActivities:nil];
     [self.navigationController presentViewController:activityController animated:YES completion:nil];
 }
-
+//获得屏幕图像
+- (UIImage *)imageFromView: (UIView *) theView
+{
+    
+    UIGraphicsBeginImageContext(theView.frame.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [theView.layer renderInContext:context];
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return theImage;
+}
 
 
 -(void)setListener:(UIView *) arr index:(NSInteger) index{
@@ -374,15 +450,23 @@
     NSUInteger index = views.tag;   //获取上面view设置的tag
     
     if(index==1){
-        
-        BaseNavigationController *na=[[BaseNavigationController alloc]initWithRootViewController:[TextController new]];
+        TextController *text=[TextController new];
+        text.codeData=_codeData;
+        BaseNavigationController *na=[[BaseNavigationController alloc]initWithRootViewController:text];
         [self presentViewController:na animated:YES completion:nil];
         
     }else if(index==2) {
+        PicterController *pic=[PicterController new];
+        pic.codeData=_codeData;
         
+        BaseNavigationController *na=[[BaseNavigationController alloc]initWithRootViewController:pic];
+        [self presentViewController:na animated:YES completion:nil];
         
     }else if(index==3) {
-        
+        ColorController *col=[ColorController new];
+        col.codeData=_codeData;
+        BaseNavigationController *na=[[BaseNavigationController alloc]initWithRootViewController:col];
+        [self presentViewController:na animated:YES completion:nil];
         
     }
 }

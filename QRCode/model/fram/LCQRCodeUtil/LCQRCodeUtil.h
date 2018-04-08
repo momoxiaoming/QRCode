@@ -9,16 +9,24 @@
 #import <UIKit/UIKit.h>
 
 @interface LCQRCodeUtil : NSObject
+
+
+
 /**
- *  生成二维码图片
- *
- *  @param QRString  二维码内容
- *  @param sizeWidth 图片size（正方形）
- *  @param color     填充色
- *
- *  @return  二维码图片
+ 生成二维码
+
+ @param content 二维码内容
+ @param size 二维码大小
+ @param logo log图片  可为空
+ @param logoFrame logo大小
+ @param color logo颜色   必须要是三元色!!!!!
+ @return 返回图片
  */
-+(UIImage *)createQRimageString:(NSString *)QRString sizeWidth:(CGFloat)sizeWidth fillColor:(UIColor *)color;
++(UIImage*)qrCodeImageWithContent:(NSString *)content
+                codeImageSize:(CGFloat)size
+                         logo:(UIImage *)logo
+                    logoFrame:(CGFloat)logoFrame
+                        Color:(UIColor*)color;
 
 /**
  *  读取图片中二维码信息

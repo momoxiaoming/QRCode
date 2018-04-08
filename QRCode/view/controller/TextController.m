@@ -8,6 +8,8 @@
 
 #import "TextController.h"
 #import "ALColorSelectorView.h"
+#import "ColorAlertView.h"
+#import <IQKeyboardManager.h>
 @interface TextController ()
 @property (nonatomic,strong) UITextView *textView;
 
@@ -16,9 +18,11 @@
 
 @property (nonatomic,strong) UIView *top_view;
 
-@property (nonatomic,strong) ALColorSelectorView *color_view;
+@property (nonatomic,strong) ColorAlertView *color_view;
+@property (nonatomic,strong)  UIButton *label;
 
 
+@property (nonatomic,strong)  UIColor *baseColor;
 
 @end
 
@@ -35,11 +39,14 @@
     
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+//    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside=YES;
+[IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+}
 
 
 -(void)initView{
-    
+
     UIBarButtonItem *close=[[UIBarButtonItem alloc]initWithImage:ALGetImage(@"close_img") style:UIBarButtonItemStylePlain target:self action:@selector(leftAction)];
     
     UIBarButtonItem *yes_btn=[[UIBarButtonItem alloc]initWithImage:ALGetImage(@"yes_img") style:UIBarButtonItemStylePlain target:self action:@selector(rightAction)];
@@ -48,7 +55,6 @@
     ;
     self.navigationItem.leftBarButtonItem=close;
     
-
 
     
     _textView=[[UITextView alloc]init];
@@ -65,19 +71,57 @@
     }];
     
     
-    ALViewBorderRadius(_textView, 8, 1, BaseColor);
+    ALViewBorderRadius(_textView, 8, 0.5, BaseColor);
 
     
     //---
-    _color_view=[[ALColorSelectorView alloc]initWithFrame:CGRectMake(0, 310, SCREEN_WIDTH, 30)];
+   
     
+    
+    
+    _label=[[UIButton alloc]init];
+//    _label.titleLabel.textColor=[UIColor blackColor];
+//    [_label setTintColor:[UIColor blackColor]];
+    _label.titleLabel.font=[UIFont systemFontOfSize:12];
+    [_label setTitleColor:BaseColor forState:UIControlStateNormal];
+    [_label setTitle:@"设置文字颜色" forState:UIControlStateNormal];
+    [self.view addSubview:_label];
+    
+    ALViewBorderRadius(_label, 8, 1, BaseColor);
+    
+    [_label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_textView.mas_bottom).offset(20);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(100, 40));
+    }];
+    
+    
+    
+    
+    _color_view=[[ColorAlertView alloc]initWithFrame:CGRectZero];
     [self.view addSubview:_color_view];
+
     
+    [_color_view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(_label.mas_bottom).offset(20);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-20, 110));
+    }];
+    
+    
+    [_color_view initData:^(NSInteger index,UIColor *color) {
+        [_textView setTextColor:color];
+        _baseColor=color;
+    }];
+    
+
     
     
     
     [self setListener:_close_img index:1];
     [self setListener:_yes_img index:2];
+    [self setListener:_label index:3];
+    [self setListener:self.view index:0];
 
     
 }
@@ -90,17 +134,12 @@
         [self showErrorMB:@"添加的文字为空!"];
         return ;
     }
+
+    [_codeData setValue:content forKey:@"text"];
+    [_codeData setValue:_baseColor==nil?[UIColor blackColor]:_baseColor forKey:@"textColor"];
+
     
-   
-    NSMutableDictionary *dir=[[NSMutableDictionary alloc]init];
-    [dir setObject:@"1" forKey:@"type"];
-    [dir setObject:content forKey:@"content"];
-    
-    
-    
-    
-    
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"codeContent" object:dir];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"codeContent" object:_codeData];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -121,13 +160,20 @@
     UIView *views = (UIView*) tap.view;
     
     NSUInteger index = views.tag;   //获取上面view设置的tag
-    
-    if(index==1){
+    if(index==0){
+        [_color_view hidenAlertView];
+        [self.textView resignFirstResponder];//关闭键盘
+    }else if(index==1){
         [self dismissViewControllerAnimated:YES completion:nil];
     }else if(index==2){
         [self dismissViewControllerAnimated:YES completion:nil];
 
         
+    }else if(index==3){
+        //弹出颜色选择框
+        
+        [_color_view hidenAlertView];
+        [_color_view showAlert:1];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "ModeController.h"
 #import "CodeController.h"
+#import <IQKeyboardManager.h>
 @interface ModeController ()
 @property (weak, nonatomic) IBOutlet UITextView *top_view;
 @property (weak, nonatomic) IBOutlet UIButton *btn;
@@ -22,6 +23,11 @@
 }
 -(void)initData{
     self.title=@"生成";
+}
+-(void)viewWillAppear:(BOOL)animated{
+    
+        [IQKeyboardManager sharedManager].shouldResignOnTouchOutside=YES;
+
 }
 -(void)initView{
     ALViewBorderRadius(_top_view, 8, 1, BaseColor);
@@ -39,6 +45,8 @@
         [self showErrorMB:@"输入内容不能为空哦!"];
         return;
     }
+    
+     [_top_view resignFirstResponder];//关闭键盘
     CodeController *code=[CodeController new];
     code.code=codestr;
     

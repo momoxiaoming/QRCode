@@ -10,4 +10,7 @@
 
 @interface TextController : BaseViewController
 
+
+@property (nonatomic,strong)NSDictionary *codeData; //附加信息
+
 @end

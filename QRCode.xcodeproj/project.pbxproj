@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		26D7EA07C49AFDC270A30589 /* libPods-QRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C39BAF6244AF72ADAE8F5FD /* libPods-QRCode.a */; };
 		30107EF9AC8F8BDAD6B3D134 /* libPods-QRCodeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F51D4E2ECA7274A0A098CFBF /* libPods-QRCodeTests.a */; };
+		7A37320D2077458500C3B79F /* PicterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A37320C2077458500C3B79F /* PicterController.m */; };
+		7A37321220774B1500C3B79F /* CodeImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A37321020774B1500C3B79F /* CodeImgCell.m */; };
+		7A37321320774B1500C3B79F /* CodeImgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A37321120774B1500C3B79F /* CodeImgCell.xib */; };
+		7A373216207755F300C3B79F /* ColorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A373215207755F300C3B79F /* ColorController.m */; };
 		7AFBEE662071CDA3008DE867 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBEE652071CDA3008DE867 /* AppDelegate.m */; };
 		7AFBEE6E2071CDA3008DE867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AFBEE6D2071CDA3008DE867 /* Assets.xcassets */; };
 		7AFBEE712071CDA3008DE867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AFBEE6F2071CDA3008DE867 /* LaunchScreen.storyboard */; };
@@ -74,6 +78,13 @@
 		4AA973428B281A5EAE87FCEF /* libPods-QRCodeUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRCodeUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B18E5363AAAE4DB7742D00F /* Pods-QRCodeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeUITests/Pods-QRCodeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D8460047D402C73896D122F /* Pods-QRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCode/Pods-QRCode.release.xcconfig"; sourceTree = "<group>"; };
+		7A37320B2077458500C3B79F /* PicterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PicterController.h; sourceTree = "<group>"; };
+		7A37320C2077458500C3B79F /* PicterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicterController.m; sourceTree = "<group>"; };
+		7A37320F20774B1500C3B79F /* CodeImgCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeImgCell.h; sourceTree = "<group>"; };
+		7A37321020774B1500C3B79F /* CodeImgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeImgCell.m; sourceTree = "<group>"; };
+		7A37321120774B1500C3B79F /* CodeImgCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CodeImgCell.xib; sourceTree = "<group>"; };
+		7A373214207755F300C3B79F /* ColorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorController.h; sourceTree = "<group>"; };
+		7A373215207755F300C3B79F /* ColorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorController.m; sourceTree = "<group>"; };
 		7AFBEE612071CDA3008DE867 /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AFBEE642071CDA3008DE867 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AFBEE652071CDA3008DE867 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -198,6 +209,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7A37320E20774AE500C3B79F /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A37320F20774B1500C3B79F /* CodeImgCell.h */,
+				7A37321020774B1500C3B79F /* CodeImgCell.m */,
+				7A37321120774B1500C3B79F /* CodeImgCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		7AFBEE582071CDA3008DE867 = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +280,7 @@
 		7AFBEEE52071FFB2008DE867 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				7A37320E20774AE500C3B79F /* cell */,
 				7AFBEF66207469AE008DE867 /* view */,
 				7AFBEEE82071FFCC008DE867 /* controller */,
 				7AFBEF602073A5B5008DE867 /* ALColorSelectorView.h */,
@@ -302,6 +324,10 @@
 				7AFBEF5A20731577008DE867 /* CodeController.m */,
 				7AFBEF5D207373C3008DE867 /* TextController.h */,
 				7AFBEF5E207373C3008DE867 /* TextController.m */,
+				7A37320B2077458500C3B79F /* PicterController.h */,
+				7A37320C2077458500C3B79F /* PicterController.m */,
+				7A373214207755F300C3B79F /* ColorController.h */,
+				7A373215207755F300C3B79F /* ColorController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -587,6 +613,7 @@
 				7AFBEE712071CDA3008DE867 /* LaunchScreen.storyboard in Resources */,
 				7AFBEF4E20721363008DE867 /* AboutController.xib in Resources */,
 				7AFBEF34207209B3008DE867 /* MBProgressHUD.bundle in Resources */,
+				7A37321320774B1500C3B79F /* CodeImgCell.xib in Resources */,
 				7AFBEF4920721077008DE867 /* ModeController.xib in Resources */,
 				7AFBEEF020720006008DE867 /* MainController.xib in Resources */,
 				7AFBEE6E2071CDA3008DE867 /* Assets.xcassets in Resources */,
@@ -764,6 +791,7 @@
 				7AFBEF5820725CD0008DE867 /* LCQrcodeUtil.m in Sources */,
 				7AFBEF65207469A0008DE867 /* ColorAlertView.m in Sources */,
 				7AFBEF31207209B3008DE867 /* TagsFrame.m in Sources */,
+				7A37321220774B1500C3B79F /* CodeImgCell.m in Sources */,
 				7AFBEF38207209B3008DE867 /* ALaunchAdManager.m in Sources */,
 				7AFBEF5320723032008DE867 /* SucController.m in Sources */,
 				7AFBEF2B207209B3008DE867 /* NSDate+AL.m in Sources */,
@@ -776,6 +804,7 @@
 				7AFBEE742071CDA4008DE867 /* main.m in Sources */,
 				7AFBEE662071CDA3008DE867 /* AppDelegate.m in Sources */,
 				7AFBEF30207209B3008DE867 /* SDWebImage.m in Sources */,
+				7A37320D2077458500C3B79F /* PicterController.m in Sources */,
 				7AFBEF5B20731577008DE867 /* CodeController.m in Sources */,
 				7AFBEF5020722521008DE867 /* ScanController.m in Sources */,
 				7AFBEF4820721077008DE867 /* ModeController.m in Sources */,
@@ -783,6 +812,7 @@
 				7AFBEF4D20721363008DE867 /* AboutController.m in Sources */,
 				7AFBEF622073A5B5008DE867 /* ALColorSelectorView.m in Sources */,
 				7AFBEF32207209B3008DE867 /* MBProgressHUD.m in Sources */,
+				7A373216207755F300C3B79F /* ColorController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
